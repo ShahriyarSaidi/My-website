@@ -3729,14 +3729,14 @@ figcaption {
 }
 
 .section {
-  padding: var(--24px) var(--24px) var(--64px);
+  padding: var(--24px) var(--24px) var(--96px);
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .section.padding-top {
-  padding-top: var(--128px);
+  padding-top: var(--64px);
 }
 
 .section.featured-product {
