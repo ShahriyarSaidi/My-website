@@ -3,7 +3,7 @@
       const playBtn = document.querySelector('.mobile-menu-icon');
       const burgerIcon = playBtn.querySelector('.burger');
 
-      const audio = new Audio('music/lofi-chill-smooth-chill-lofi-for-vlogs-and-background-music-159456.mp3');
+      const audio = new Audio('music/lofi-chill-3-315216.mp3');
 
       audio.loop = true;
 
