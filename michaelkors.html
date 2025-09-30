@@ -152,7 +152,7 @@
             <div class="image-slider">
               <img src="images/Brendler/Michael Kors/1.avif" alt="Michael Kors">
               <img src="images/Brendler/Michael Kors/2.avif" alt="Michael Kors">
-              
+
 
 
             </div>
@@ -192,7 +192,7 @@
             <div class="image-slider">
               <img src="images/Brendler/Michael Kors/3.avif" alt="Michael Kors">
               <img src="images/Brendler/Michael Kors/4.avif" alt="Michael Kors">
-              
+
 
 
             </div>
@@ -233,7 +233,7 @@
               <img src="images/Brendler/Michael Kors/5.avif" alt="Michael Kors">
               <img src="images/Brendler/Michael Kors/6.avif" alt="Michael Kors">
               <img src="images/Brendler/Michael Kors/7.avif" alt="Michael Kors">
-              
+
 
 
             </div>
@@ -275,7 +275,7 @@
               <img src="images/Brendler/Michael Kors/9.avif" alt="Michael Kors">
               <img src="images/Brendler/Michael Kors/10.avif" alt="Michael Kors">
               <img src="images/Brendler/Michael Kors/11.avif" alt="Michael Kors">
-              
+
 
 
             </div>
@@ -308,10 +308,10 @@
       </div>
 
 
-     
 
 
-      
+
+
 
 
 
@@ -370,139 +370,11 @@
   <script src="js/webflow.schunk.bf454d8d950d7e1a.js" type="text/javascript"></script>
   <script src="js/webflow-script.js" type="text/javascript"></script>
   <script src="js/music.js" type="text/javascript"></script>
-
-
-  <script>
-
-    document.querySelectorAll('.image-slider-wrapper').forEach(wrapper => {
-      const slider = wrapper.querySelector('.image-slider');
-      const images = Array.from(slider.querySelectorAll('img'));
-      const dotsContainer = wrapper.querySelector('.slider-dots');
-
-      // Clone first and last for smooth loop
-      const firstClone = images[0].cloneNode(true);
-      const lastClone = images[images.length - 1].cloneNode(true);
-      slider.appendChild(firstClone);
-      slider.insertBefore(lastClone, images[0]);
-
-      const total = images.length;
-
-
-      function updateSlider(transition = true) {
-        if (!transition) slider.style.transition = 'none';
-        else slider.style.transition = 'transform 0.5s ease';
-
-        slider.style.transform = `translateX(-${current * 100}%)`;
-
-        dots.forEach(d => d.classList.remove('active'));
-        let dotIndex = current - 1;
-        if (dotIndex < 0) dotIndex = total - 1;
-        if (dotIndex >= total) dotIndex = 0;
-        dots[dotIndex].classList.add('active');
-
-        // Mövqeyi yadda saxla
-        localStorage.setItem("sliderIndex", current);
-      }
-
-
-      // 👉 Yadda qalan şəkil mövqeyini localStorage-dan götür
-      let savedIndex = parseInt(localStorage.getItem("sliderIndex")) || 1;
-      let current = Math.min(Math.max(savedIndex, 1), total); // 1 ilə total arası olsun
-
-      // İlk mövqeyi animasiyasız qoyuruq
-      slider.style.transition = 'none';
-      slider.style.transform = `translateX(-${current * 100}%)`;
-
-      setTimeout(() => {
-        slider.style.transition = 'transform 0.5s ease';
-      }, 50);
-
-      // Create dots
-      images.forEach((_, idx) => {
-        const dot = document.createElement('span');
-        if (idx === current - 1) dot.classList.add('active');
-        dot.addEventListener('click', () => {
-          current = idx + 1;
-          updateSlider();
-        });
-        dotsContainer.appendChild(dot);
-      });
-
-      const dots = dotsContainer.querySelectorAll('span');
-
-      function updateSlider(transition = true) {
-        if (!transition) slider.style.transition = 'none';
-        else slider.style.transition = 'transform 0.5s ease';
-
-        slider.style.transform = `translateX(-${current * 100}%)`;
-
-        dots.forEach(d => d.classList.remove('active'));
-        let dotIndex = current - 1;
-        if (dotIndex < 0) dotIndex = total - 1;
-        if (dotIndex >= total) dotIndex = 0;
-        dots[dotIndex].classList.add('active');
-
-        // 👉 Mövqeyi yadda saxla
-        localStorage.setItem("sliderIndex", current);
-      }
-
-      // Transition end fix
-      slider.addEventListener('transitionend', () => {
-        if (current === 0) {
-          current = total;
-          updateSlider(false);
-          setTimeout(() => slider.style.transition = 'transform 0.5s ease', 50);
-        } else if (current > total) {
-          current = 1;
-          updateSlider(false);
-          setTimeout(() => slider.style.transition = 'transform 0.5s ease', 50);
-        }
-      });
-
-      // Arrows
-      wrapper.querySelector('.next')?.addEventListener('click', () => {
-        current++;
-        updateSlider();
-      });
-      wrapper.querySelector('.prev')?.addEventListener('click', () => {
-        current--;
-        updateSlider();
-      });
-
-      // Drag / Swipe
-      let startX = 0;
-      let isDown = false;
-
-      slider.addEventListener('mousedown', e => {
-        isDown = true;
-        startX = e.pageX;
-      });
-
-      slider.addEventListener('mouseup', e => {
-        if (!isDown) return;
-        let diff = e.pageX - startX;
-        if (diff > 30) current--;
-        else if (diff < -30) current++;
-        updateSlider();
-        isDown = false;
-      });
-
-      slider.addEventListener('mouseleave', () => { isDown = false; });
-
-      slider.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
-      slider.addEventListener('touchend', e => {
-        let diff = e.changedTouches[0].clientX - startX;
-        if (diff > 30) current--;
-        else if (diff < -30) current++;
-        updateSlider();
-      });
-    });
+  <script src="js/imageslide.js" type="text/javascript"></script>
+  <script src="js/lazy.js" type="text/javascript"></script>
 
 
 
-
-
-  </script>
 
 
 
