@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const e = new Audio("music/We-Wish-You-chosic.com_.mp3");
+  const e = new Audio("music/lofi-chill-3-315216.mp3");
   e.loop = true;
   e.volume = 0.5;
 
